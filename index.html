@@ -2,15 +2,33 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <script src="main.js"></script>
     <title>Document</title>
+    <script src="main.js" defer></script>
 </head>
 <body>
     <div class="mainContainer">
-        
+            <div class="correntDataContainer">
+                <h4 class="correntDataH4">Текущая дата</h4>
+                <p class="correntDataOutput" id="correntDataOutput"></p>
+                
+            </div>
+            <div class="inputData">
+                <span inputText>год рождения</span>
+                <input placeholder="в формате 0000" type="text" class="input" id="inputData_1">
+                <span inputText>месяц рождения </span>
+                <input placeholder="в формате 00" type="text" class="input" id="inputData_2">
+                <span inputText>день рождения </span>
+                <input placeholder="в формате 00" type="text" class="input" id="inputData_3">
+                <button onkeydown=inputData()>Обработать</button>
+            </div>
+            <div class="outputData">
+                    <span class="liveDataOutput">чувак, ты прожил уже</span>
+                    <p id="liveDataOutput" class="liveDataOutput">sdsd</p>
+                    <span class="liveDataOutput">прикинь</span>
+            </div>
+            
     </div>
+    
 </body>
 </html>
