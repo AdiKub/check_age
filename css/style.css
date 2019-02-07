@@ -59,6 +59,9 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     align-items: center;
 }
+.form-title {
+    margin-bottom: 10px;
+}
 
 .button {
     margin-top: 10px;
