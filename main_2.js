@@ -3,7 +3,7 @@ var userData = {
 }
 
 
-function createNewData(idName) {
+function createNewUser(idName) {
     var inputValue = document.getElementById(idName).value; 
     userData[idName] = inputValue;
 }
@@ -18,6 +18,7 @@ function generateLiveTime() {
          "-"+userData.birthDay.date+
         "-"+userData.birthDay.year;
         checkAge(birthDate)       
+        setTimeout(generateLiveTime, 1000)
 }
 
  function checkAge(d) {
@@ -31,22 +32,28 @@ function generateLiveTime() {
     var hour = differensDate.getHours();
     var min = differensDate.getMinutes();
     var sec = differensDate.getSeconds();
-    var liveTime = year + ' лет '+ month + ' месяца '+date+ ' дня ' + hour + ' часов ' + min + ' минут ' + sec +" секунд "; 
+    var liveTime = year+' лет '
+                 +month+ ' месяца '
+                  +date+ ' дня '
+                  +hour+ ' часов ' 
+                   +min+ ' минут ' 
+                   +sec+" секунд "; 
     outputData(liveTime); 
 }
 
 function outputData (val) {
     var correntData = document.getElementById("liveDataOutput")
-    correntData.innerHTML = "";
+        correntData.innerHTML = "";
     var out ="<span>" +userData.firstName+"  "+userData.lastName+ " вы прожил"+ "</span>"+
             "<span>"+val+"</span>";
-    correntData.innerHTML = out;
+        correntData.innerHTML = out;
    }
 
 
    function createAndShowNewData() {
-    unixTodayData = Math.floor(new Date().getTime()/1000);
+    var unixTodayData = Math.floor(new Date().getTime()/1000);
     var todayDate = new Date(unixTodayData*1000);
+
     var year = todayDate.getFullYear();
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     var month = months[todayDate.getMonth()];
@@ -54,9 +61,15 @@ function outputData (val) {
     var hour = todayDate.getHours();
     var min = todayDate.getMinutes();
     var sec = todayDate.getSeconds();
-    var liveTime = month + '-'+date+"-"+year+  ' ' +hour+ ':' +min+ ':' +sec;
+    var liveTime =  month+
+                 '-'+date+
+                 "-"+year+
+                ' ' +hour+ 
+                 ':' +min+ 
+                 ':' +sec;
     document.getElementById("correntDataOutput").innerHTML = liveTime;
 }
+
 
 
 setInterval(function() {createAndShowNewData()}, 1000)
