@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
-    <script src="main.js" defer></script>
+    
 </head>
 <body>
     <div class="mainContainer">
@@ -13,22 +13,42 @@
                 <p class="correntDataOutput" id="correntDataOutput"></p>
                 
             </div>
-            <div class="inputData">
-                <span inputText>год рождения</span>
-                <input placeholder="в формате 0000" type="text" class="input" id="inputData_1">
-                <span inputText>месяц рождения </span>
-                <input placeholder="в формате 00" type="text" class="input" id="inputData_2">
-                <span inputText>день рождения </span>
-                <input placeholder="в формате 00" type="text" class="input" id="inputData_3">
-                <button onkeydown=inputData()>Обработать</button>
+            <div class="form-wrapper">
+                <h2 class="form-title">Введите ваши данные</h2>
+                <div class="form-container">
+                    <form class="form">
+                        <label  for="inputName">Имя</label>
+                        <input  onkeyup="createNewData(id)"  placeholder="имя" type="text" class="input" id="firstName">
+                    </form>
+                    <form class="form">
+                        <label for="inputLastName">Фамилия</label>
+                        <input onkeyup="createNewData(id)" placeholder="фамилия" type="text" class="input" id="lastName">
+                    </form>
+                </div>
+                <h4 class="form-title">Дата рождения</h4>
+                <div class="form-container">
+                        
+                    <form class="form">
+                        <label for="inputDate">месяц</label>
+                        <input onkeyup="createNewDate(id)"  placeholder="00" type="number" class="input date" id="month">
+                    </form>
+                    <form class="form">
+                        <label for="inputDate">день</label>
+                        <input onkeyup="createNewDate(id)" placeholder="00" type="number" class="input date" id="date">
+                    </form>
+                    <form class="form">
+                        <label for="inputDate">год</label>
+                        <input onkeyup="createNewDate(id)" placeholder="0000" type="number" class="input date_2" id="year">
+                    </form>
+                </div>
             </div>
-            <div class="outputData">
-                    <span class="liveDataOutput">чувак, ты прожил уже</span>
-                    <p id="liveDataOutput" class="liveDataOutput">sdsd</p>
-                    <span class="liveDataOutput">прикинь</span>
+            <Button onclick="generateLiveTime()" class="button">Показать</Button>
+            <div class="outputData" id="liveDataOutput">
+                    
             </div>
             
     </div>
-    
+   
+    <script src="main_2.js" defer></script>
 </body>
 </html>
