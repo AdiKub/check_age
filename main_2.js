@@ -1,25 +1,38 @@
 var userData = {
     birthDay: {},
 }
-
+var cTer =0;
 
 function createNewUser(idName) {
+    cTer =0;
     var inputValue = document.getElementById(idName).value; 
     userData[idName] = inputValue;
 }
 
 function createNewDate(idName) {
+    cTer++;
     var inputValue = document.getElementById(idName).value; 
     userData.birthDay[idName] = inputValue;
+    
 }
 
 function generateLiveTime() {
-    var birthDate = userData.birthDay.month+
+    if (Object.keys(userData).length > 2 && cTer >= 8 ) {
+        var birthDate = userData.birthDay.month+
          "-"+userData.birthDay.date+
         "-"+userData.birthDay.year;
         checkAge(birthDate)       
         setTimeout(generateLiveTime, 1000)
+    } else {
+
+        var div = document.getElementById("liveDataOutput")
+        div.innerHTML = ""
+        div.insertAdjacentHTML("afterBegin", `<span class="error">  заполните форму полностью</span> ` )
+    }
+    
 }
+
+
 
  function checkAge(d) {
     var unixtodayData = Math.floor(new Date().getTime()/1000)
@@ -50,26 +63,20 @@ function outputData (val) {
    }
 
 
-   function createAndShowNewData() {
-    var unixTodayData = Math.floor(new Date().getTime()/1000);
-    var todayDate = new Date(unixTodayData*1000);
-
+function createAndShowNewData() {    
+    var todayDate = new Date;
+    var monthNames = [
+      "Янв", "Фев", "Мар",
+      "Апр", "Май", "Июнь", "Июль",
+      "Авг", "Сен", "Окт",
+      "Ноя", "Дек"
+    ];
+    var day = todayDate.getDate();
+    var monthIndex = todayDate.getMonth();
     var year = todayDate.getFullYear();
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var month = months[todayDate.getMonth()];
-    var date = todayDate.getDate();
-    var hour = todayDate.getHours();
-    var min = todayDate.getMinutes();
-    var sec = todayDate.getSeconds();
-    var liveTime =  month+
-                 '-'+date+
-                 "-"+year+
-                ' ' +hour+ 
-                 ':' +min+ 
-                 ':' +sec;
-    document.getElementById("correntDataOutput").innerHTML = liveTime;
+    var toDay = day + ' ' + monthNames[monthIndex] + ' ' + year;
+    document.getElementById("correntDataOutput").innerHTML = toDay;
+      
 }
-
-
 
 setInterval(function() {createAndShowNewData()}, 1000)
