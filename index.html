@@ -25,20 +25,16 @@
                         <input onkeyup="createNewUser(id)" placeholder="фамилия" type="text" class="input" id="lastName">
                     </form>
                 </div>
-                <h4 class="form-title">Дата рождения</h4>
                 <div class="form-container">
-                        
                     <form class="form">
-                        <label for="inputDate">день</label>
-                        <input onkeyup="createNewDate(id)" placeholder="00" type="number" class="input date" id="date">
-                    </form>
-                    <form class="form">
-                        <label for="inputDate">месяц</label>
-                        <input onkeyup="createNewDate(id)"  placeholder="00" type="number" class="input date" id="month">
-                    </form>
-                    <form class="form">
-                        <label for="inputDate">год</label>
-                        <input onkeyup="createNewDate(id)" placeholder="0000" type="number" class="input date_2" id="year">
+                        <label for="birthDay">Дата Рождение:</label>
+                        <input  onkeyup="createNewUser(id)"
+                                type="date" 
+                                id="birthDay" 
+                                name="trip-start"
+                                value=""
+                                min="1900-01-01" 
+                                max="2018-12-31">
                     </form>
                 </div>
             </div>

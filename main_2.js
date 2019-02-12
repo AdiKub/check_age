@@ -1,30 +1,24 @@
-var userData = {
-    birthDay: {},
-}
-var cTer =0;
+var userData = {};
 
-function createNewUser(idName) {
-    cTer =0;
-    var inputValue = document.getElementById(idName).value; 
-    userData[idName] = inputValue;
-}
-
-function createNewDate(idName) {
-    cTer++;
-    var inputValue = document.getElementById(idName).value; 
-    userData.birthDay[idName] = inputValue;
+const checkData=obj=> {
+    if (Object.keys(obj).length >2 && 
+    Object.keys(obj["birthDay"]).length >9 
+    ) {return true} else {return false};
     
 }
 
-function generateLiveTime() {
-    if (Object.keys(userData).length > 2 && cTer >= 8 ) {
-        var birthDate = userData.birthDay.month+
-         "-"+userData.birthDay.date+
-        "-"+userData.birthDay.year;
+
+const createNewUser = idName =>{
+    let inputValue = document.getElementById(idName).value; 
+    userData[idName] = inputValue;
+}
+
+const generateLiveTime=()=> {
+    if (checkData(userData)) {
+        var birthDate = userData["birthDay"];
         checkAge(birthDate)       
         setTimeout(generateLiveTime, 1000)
     } else {
-
         var div = document.getElementById("liveDataOutput")
         div.innerHTML = ""
         div.insertAdjacentHTML("afterBegin", `<span class="error">  заполните форму полностью</span> ` )
@@ -34,7 +28,7 @@ function generateLiveTime() {
 
 
 
- function checkAge(d) {
+const checkAge = (d) => {
     var unixtodayData = Math.floor(new Date().getTime()/1000)
     var unixDataOfBirth = Math.floor(new Date(d).getTime()/1000)
     var twoDateDifference = unixtodayData - unixDataOfBirth;
@@ -54,16 +48,18 @@ function generateLiveTime() {
     outputData(liveTime); 
 }
 
-function outputData (val) {
+const outputData = val => {
     var correntData = document.getElementById("liveDataOutput")
         correntData.innerHTML = "";
-    var out ="<span>" +userData.firstName+"  "+userData.lastName+ " вы прожил"+ "</span>"+
-            "<span>"+val+"</span>";
+    var out =`<span class="userData" > ${userData.firstName} ${userData.lastName} </span>
+            <br><span>вы прожил</span>
+            <br><span> ${val}</span>`;
         correntData.innerHTML = out;
+        
    }
 
 
-function createAndShowNewData() {    
+const createAndShowNewData = () => {    
     var todayDate = new Date;
     var monthNames = [
       "Янв", "Фев", "Мар",
